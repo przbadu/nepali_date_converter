@@ -7,3 +7,12 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+# Ignore all emacs and vim tmp files
+*~
+#*
+*.swp
+*.swo
+*#
+*.#*
+*.*#
