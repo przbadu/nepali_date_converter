@@ -1,5 +1,6 @@
 require "nepali_date_converter/version"
 
 module NepaliDateConverter
-  # Your code goes here...
+  require 'nepali_date_converter/calendar'
+#  require 'nepali_date_converter/converter'
 end
