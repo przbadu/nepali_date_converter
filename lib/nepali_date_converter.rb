@@ -1,5 +1,5 @@
-require_relative "nepali_date_converter/version"
-require_relative 'nepali_date_converter/calendar'
+require 'nepali_date_converter/version'
+require 'nepali_date_converter/calendar'
 
 module NepaliDateConverter
   class Convert
@@ -17,11 +17,7 @@ module NepaliDateConverter
         nepali_month = 9 # initial nepali month
         nepali_day = 17 - 1 # initial nepali daynames
         total_english_days = 0
-        total_nepali_days = 0
         day = 7 - 1
-        a, m = 0, 0
-        j = 0
-        num_day = 0
 
         # Count total no. of days in terms of year
         (yy - english_year).times do |i|
@@ -104,32 +100,23 @@ module NepaliDateConverter
       english_day = 14 - 1
       # initial equivalent nepali date
       nepali_year = 2000
-      nepali_month = 1
-      nepali_day = 1
-
       # calculation part
-      total_english_days, total_nepali_days = 0, 0
-      a, day = 0, 4 - 1
-      m, y = 0, 0
-      i, k = 0, 0
-      num_day = 0
+      total_nepali_days = 0
+      day = 4 - 1
+      k = 0
 
       month_format = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
       leap_month_format = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
       if NepaliDateConverter::Calendar.valid_nepali_date?(yy, mm, dd)
         # Count total days in terms of year
-        (yy - nepali_year).times do |i|
-          12.times do |j|
-            total_nepali_days += NepaliDateConverter::Calendar::BS_CALENDAR[k][j+1]
-            k += 1
-          end
+        (yy - nepali_year).times do
+          12.times { |j| total_nepali_days += NepaliDateConverter::Calendar::BS_CALENDAR[k][j+1] }
+          k += 1
         end
 
         # Count total days in terms of month
-        mm.times do |j|
-          total_nepali_days += NepaliDateConverter::Calendar::BS_CALENDAR[k][j+1]
-        end
+        mm.times {|j| total_nepali_days += NepaliDateConverter::Calendar::BS_CALENDAR[k][j+1] }
 
         # count total days in terms of day
         total_nepali_days += dd

@@ -7,7 +7,7 @@
 /pkg/
 /spec/reports/
 /tmp/
-
+.idea/
 # Ignore all emacs and vim tmp files
 *~
 #*
