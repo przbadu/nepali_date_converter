@@ -20,15 +20,53 @@ RSpec.describe NepaliDateConverter::Calendar do
   context '.get_nepali_month' do
     it { expect(described_class.get_nepali_month(1)).to eq('Baishakh')}
     it { expect(described_class.get_nepali_month(2)).to eq('Jestha')}
-    it { expect(described_class.get_nepali_month(3)).to eq('Asar')}
+    it { expect(described_class.get_nepali_month(3)).to eq('Ashad')}
     it { expect(described_class.get_nepali_month(4)).to eq('Shrawan')}
     it { expect(described_class.get_nepali_month(5)).to eq('Bhadra')}
-    it { expect(described_class.get_nepali_month(6)).to eq('Aswin')}
+    it { expect(described_class.get_nepali_month(6)).to eq('Ashwin')}
     it { expect(described_class.get_nepali_month(7)).to eq('Kartik')}
-    it { expect(described_class.get_nepali_month(8)).to eq('Mansir')}
+    it { expect(described_class.get_nepali_month(8)).to eq('Mangshir')}
     it { expect(described_class.get_nepali_month(9)).to eq('Poush')}
     it { expect(described_class.get_nepali_month(10)).to eq('Magh')}
     it { expect(described_class.get_nepali_month(11)).to eq('Falgun')}
     it { expect(described_class.get_nepali_month(12)).to eq('Chaitra')}
+  end
+
+  context '.valid_english_date?' do
+    it { expect { described_class.valid_english_date?(1943, 1, 1)}.to raise_error('Supported only between 1944-2022')}
+    it { expect { described_class.valid_english_date?(2024, 1, 1)}.to raise_error('Supported only between 1944-2022')}
+    
+
+    (1944..2022).each do |year|
+      it { expect(described_class.valid_english_date?(year, 1, 1)).to be_truthy}
+    end
+
+    (1..12).each do |month|
+      it { expect(described_class.valid_english_date?(2000, month, 1)).to be_truthy}
+    end
+
+    (1..31).each do |day|
+      it { expect(described_class.valid_english_date?(2000, 1, day)).to be_truthy}
+    end
+    it { expect {described_class.valid_english_date?(2000, 13, 1)}.to raise_error('Invalid month range')}
+    it { expect {described_class.valid_english_date?(2000, 1, 33)}.to raise_error('Invalid day range')}
+  end
+
+  context '.valid_nepali_date?' do
+    (2000..2089).each do |year|
+      it {expect(described_class.valid_nepali_date?(year, 1, 1)).to be_truthy}
+    end
+
+    (1..12).each do |month|
+      it {expect(described_class.valid_nepali_date?(2022, month, 1)).to be_truthy}
+    end
+
+    (1..32).each do |day|
+      it {expect(described_class.valid_nepali_date?(2022, 1, day)).to be_truthy}
+    end
+
+    it {expect{described_class.valid_nepali_date?(2091, 1, 1)}.to raise_error('Supported only between 2000-2089')}
+    it {expect{described_class.valid_nepali_date?(2022, 13, 1)}.to raise_error('Invalid month range')}
+    it {expect{described_class.valid_nepali_date?(2022, 1, 33)}.to raise_error('Invalid day range')}
   end
 end

@@ -2,9 +2,9 @@ require 'date'
 
 module NepaliDateConverter
   class Calendar
-    NEPALI_MONTHS = %w(Baishakh Jestha Asar Shrawan Bhadra Aswin Kartik Mansir Poush Magh Falgun Chaitra)
+    NEPALI_MONTHS = %w(Baishakh Jestha Ashad Shrawan Bhadra Ashwin Kartik Mangshir Poush Magh Falgun Chaitra)
 
-    MONTH_IN_EACH_YEAR = [
+    BS_CALENDAR = [
                           [2000,30,32,31,32,31,30,30,30,29,30,29,31],
                           [2001,31,31,32,31,31,31,30,29,30,29,30,30],
                           [2002,31,31,32,32,31,30,30,29,30,29,30,30],
@@ -154,6 +154,32 @@ module NepaliDateConverter
       #
       def get_nepali_month(idx)
         NepaliDateConverter::Calendar::NEPALI_MONTHS[idx-1]
+      end
+
+      # Check if date range is in english date
+      #
+      #  is_in_range_eng(1944, 12, 31)  # => true
+      #
+      def valid_english_date?(year, month, day)
+        raise 'Supported only between 1944-2022' unless (1944..2022).include?(year)
+        raise 'Invalid month range' unless (1..12).include?(month)
+        raise 'Invalid day range' unless (1..31).include?(day)
+        true
+      end
+
+      # check if date range is in nepali date
+      # 
+      def valid_nepali_date?(year, month, day)
+        raise 'Supported only between 2000-2089' unless (2000..2089).include?(year)
+        raise 'Invalid month range' unless (1..12).include?(month)
+        raise 'Invalid day range' unless (1..32).include?(day)
+        true
+      end
+
+      # Check if given year is leap year
+      # 
+      def is_leap_year?(year)
+        Date.leap?(year)
       end
     end
   end
