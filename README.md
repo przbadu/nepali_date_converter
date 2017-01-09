@@ -1,8 +1,6 @@
 # NepaliDateConverter
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/nepali_date_converter`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A ruby library to convert A.D (english) date to B.S (nepali) date and vice versa.
 
 ## Installation
 
@@ -22,7 +20,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Convert A.D to B.S
+
+```ruby
+NepaliDateConverter::Convert.to_bs(yyyy, mm, dd)
+```
+
+convert B.S to A.D
+
+```ruby
+NepaliDateConverter::Convert.to_ad(yyyy, mm, dd)
+```
+
+## Gotcha
+
+Right now we are only able to converter nepali date from year range (2000 - 2089).
 
 ## Development
 
