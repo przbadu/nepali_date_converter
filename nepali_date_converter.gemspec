@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Pushpa Raj Badu"]
   spec.email         = ["pushparaj.badu@gmail.com"]
 
-  spec.summary       = %q{nepali date converter library to convert AD to BS and vice versa}
-  spec.description   = %q{nepali date converter library to convert AD to BS and vice versa}
-  spec.homepage      = ""
+  spec.summary       = %q{Ruby library to convert AD to BS and vice versa}
+  spec.description   = %q{Ruby library to convert AD to BS and convert BS to AD}
+  spec.homepage      = "https://github.com/przbadu/nepali_date_converter"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -33,5 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "pry"
+  spec.add_development_dependency "pry", '~> 0.10.4'
 end
