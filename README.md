@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/przbadu/nepali_date_converter.svg?branch=master)](https://travis-ci.org/przbadu/nepali_date_converter)
+[![Gem Version](https://badge.fury.io/rb/nepali_date_converter.svg)](https://badge.fury.io/rb/nepali_date_converter)
 
 # NepaliDateConverter
 
