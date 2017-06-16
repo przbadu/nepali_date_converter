@@ -23,18 +23,22 @@ Or install it yourself as:
 Convert A.D to B.S
 
 ```ruby
-NepaliDateConverter::Convert.to_bs(yyyy, mm, dd)
+NepaliDateConverter::Convert.to_nepali(yyyy, mm, dd)
 ```
 
 convert B.S to A.D
 
 ```ruby
-NepaliDateConverter::Convert.to_ad(yyyy, mm, dd)
+NepaliDateConverter::Convert.to_english(yyyy, mm, dd)
 ```
+
+## TODO
+
+* Add more specs
 
 ## Gotcha
 
-Right now we are only able to converter nepali date from year range (2000 - 2089).
+Till now, we can only convert date from 2000 to 2033 B.S (nepali date).
 
 ## Development
 
