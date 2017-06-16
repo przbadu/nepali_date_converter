@@ -6,21 +6,6 @@ describe NepaliDateConverter do
   end
 
   context '.to_nepali' do
-    it { expect(to_bs(2017, 1, 1)).to eq(
-      {year: 2073, month: 9, date: 17, day: 'Sunday', nepali_month: 'Poush', week_day: 1}) }
-    it { expect(to_bs(2017, 1, 2)).to eq(
-      {year: 2073, month: 9, date: 18, day: 'Monday', nepali_month: 'Poush', week_day: 2}) }
-    it { expect(to_bs(2017, 1, 3)).to eq(
-      {year: 2073, month: 9, date: 19, day: 'Tuesday', nepali_month: 'Poush', week_day: 3}) }
-    it { expect(to_bs(2017, 1, 4)).to eq(
-      {year: 2073, month: 9, date: 20, day: 'Wednesday', nepali_month: 'Poush', week_day: 4}) }
-    it { expect(to_bs(2017, 1, 5)).to eq(
-      {year: 2073, month: 9, date: 21, day: 'Thursday', nepali_month: 'Poush', week_day: 5}) }
-    it { expect(to_bs(2017, 1, 6)).to eq(
-      {year: 2073, month: 9, date: 22, day: 'Friday', nepali_month: 'Poush', week_day: 6}) }
-    it { expect(to_bs(2017, 1, 7)).to eq(
-      {year: 2073, month: 9, date: 23, day: 'Saturday', nepali_month: 'Poush', week_day: 7}) }
-
     Seed::DATA.each do |data|
       nepali, english = data[:nepali], data[:english]
       expected = {
