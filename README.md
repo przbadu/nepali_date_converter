@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/przbadu/nepali_date_converter.svg?branch=master)
+
 # NepaliDateConverter
 
 A ruby library to convert A.D (english) date to B.S (nepali) date and vice versa.

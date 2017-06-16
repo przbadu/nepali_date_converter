@@ -33,9 +33,8 @@ RSpec.describe NepaliDateConverter::Calendar do
   end
 
   context '.valid_english_date?' do
-    it { expect { described_class.valid_english_date?(1943, 1, 1)}.to raise_error('Supported only between 1944-2022')}
-    it { expect { described_class.valid_english_date?(2024, 1, 1)}.to raise_error('Supported only between 1944-2022')}
-    
+    it { expect { described_class.valid_english_date?(1943, 1, 1)}.
+         to raise_error('Supported only between 1944-2033')}
 
     (1944..2022).each do |year|
       it { expect(described_class.valid_english_date?(year, 1, 1)).to be_truthy}
