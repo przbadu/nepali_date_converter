@@ -55,9 +55,9 @@ end
 
 
 def to_bs(yy, mm, dd)
-  NepaliDateConverter::Convert.to_bs(yy, mm, dd)
+  NepaliDateConverter::Convert.to_nepali(yy, mm, dd)
 end
 
 def to_ad(yy, mm, dd)
-  NepaliDateConverter::Convert.to_ad(yy, mm, dd)
+  NepaliDateConverter::Convert.to_english(yy, mm, dd)
 end

@@ -4,7 +4,7 @@ require 'nepali_date_converter/calendar'
 module NepaliDateConverter
   class Convert
 
-    def self.to_bs(yy, mm, dd)
+    def self.to_nepali(yy, mm, dd)
       if NepaliDateConverter::Calendar.valid_english_date?(yy, mm, dd)
         @yy, @mm, @dd = yy, mm, dd
         # english month data
@@ -91,7 +91,7 @@ module NepaliDateConverter
       end
     end
 
-    def self.to_ad(yy, mm, dd)
+    def self.to_english(yy, mm, dd)
       @yy, @mm, @dd = yy, mm, dd
 
       # initialize english date
@@ -103,8 +103,8 @@ module NepaliDateConverter
       @day=4-1
       @m, @y, @i, @k, @numDay = 0, 0, 0, 0, 0
 
-      @month = [31,28,31,30,31,30,31,31,30,31,30,31]
-      @lmonth = [31,29,31,30,31,30,31,31,30,31,30,31]
+      @month = [0,31,28,31,30,31,30,31,31,30,31,30,31]
+      @lmonth = [0,31,29,31,30,31,30,31,31,30,31,30,31]
 
       if NepaliDateConverter::Calendar.valid_nepali_date?(@yy, @mm, @dd)
         # count total days in-terms of year
@@ -116,7 +116,7 @@ module NepaliDateConverter
         end
 
         # count total days in-terms of month
-        for j in 1..@mm
+        for j in 1...@mm
           @total_nDays += NepaliDateConverter::Calendar::BS_CALENDAR[@k][j]
         end
 
@@ -138,7 +138,7 @@ module NepaliDateConverter
           @total_eDays += 1
           @day += 1
 
-          if @total_eDays > 1
+          if @total_eDays > @a
             @m += 1
             @total_eDays = 1
 
@@ -162,7 +162,7 @@ module NepaliDateConverter
           month: @m,
           date: @total_eDays,
           day: NepaliDateConverter::Calendar.get_day_of_week(@day),
-          nepali_month: NepaliDateConverter::Calendar.get_nepali_month(@m),
+          nepali_month: NepaliDateConverter::Calendar.get_english_month(@m),
           week_day: @numDay
         }
       end
