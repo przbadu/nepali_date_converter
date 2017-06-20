@@ -27,12 +27,20 @@ Convert A.D to B.S
 
 ```ruby
 NepaliDateConverter::Convert.to_nepali(yyyy, mm, dd)
+
+# Example:
+NepaliDateConverter::Convert.to_nepali(2017, 06, 20)
+# => {:year=>2074, :month=>3, :date=>6, :day=>"Tuesday", :nepali_month=>"Ashad", :week_day=> 3}
 ```
 
 convert B.S to A.D
 
 ```ruby
 NepaliDateConverter::Convert.to_english(yyyy, mm, dd)
+
+# Example:
+NepaliDateConverter::Convert.to_english(2074, 3, 6)
+# => {:year=>2017, :month=>6, :date=>20, :day=>"Tuesday", :english_month=>"June", :week_day=>3}
 ```
 
 ## TODO

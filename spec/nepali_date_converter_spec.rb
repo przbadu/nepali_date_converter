@@ -29,7 +29,7 @@ describe NepaliDateConverter do
         month: english[1],
         date: english[2],
         day: english[3],
-        nepali_month: english[4],
+        english_month: english[4],
         week_day: english[5]
       }
 

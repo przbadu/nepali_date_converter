@@ -162,7 +162,7 @@ module NepaliDateConverter
           month: @m,
           date: @total_eDays,
           day: NepaliDateConverter::Calendar.get_day_of_week(@day),
-          nepali_month: NepaliDateConverter::Calendar.get_english_month(@m),
+          english_month: NepaliDateConverter::Calendar.get_english_month(@m),
           week_day: @numDay
         }
       end
