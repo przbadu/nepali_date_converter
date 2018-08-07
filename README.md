@@ -52,7 +52,7 @@ NepaliDateConverter::Convert.to_english(2074, 3, 6)
 
 ## Gotcha
 
-Till now, we can only convert date from 2000 to 2033 B.S (nepali date).
+Till now, we can only convert date from 2000 to 2089 B.S (nepali date).
 
 ## Development
 
