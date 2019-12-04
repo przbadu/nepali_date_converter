@@ -31,6 +31,21 @@ RSpec.describe NepaliDateConverter::Calendar do
     it { expect(described_class.get_nepali_month(11)).to eq('Falgun')}
     it { expect(described_class.get_nepali_month(12)).to eq('Chaitra')}
   end
+  
+  context '.get_nepali_month in devanagri' do
+    it { expect(described_class.get_nepali_month(1, devanagari: true)).to eq('बैशाख')}
+    it { expect(described_class.get_nepali_month(2, devanagari: true)).to eq('जेठ')}
+    it { expect(described_class.get_nepali_month(3, devanagari: true)).to eq('असार')}
+    it { expect(described_class.get_nepali_month(4, devanagari: true)).to eq('श्रावण')}
+    it { expect(described_class.get_nepali_month(5, devanagari: true)).to eq('भदौ')}
+    it { expect(described_class.get_nepali_month(6, devanagari: true)).to eq('आश्विन')}
+    it { expect(described_class.get_nepali_month(7, devanagari: true)).to eq('कार्तिक')}
+    it { expect(described_class.get_nepali_month(8, devanagari: true)).to eq('मंसिर')}
+    it { expect(described_class.get_nepali_month(9, devanagari: true)).to eq('पुष')}
+    it { expect(described_class.get_nepali_month(10, devanagari: true)).to eq('माघ')}
+    it { expect(described_class.get_nepali_month(11, devanagari: true)).to eq('फाल्गुन')}
+    it { expect(described_class.get_nepali_month(12, devanagari: true)).to eq('चैत्र')}
+  end
 
   context '.valid_english_date?' do
     it { expect { described_class.valid_english_date?(1943, 1, 1)}.

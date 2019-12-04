@@ -1,10 +1,9 @@
 require 'nepali_date_converter/version'
 require 'nepali_date_converter/calendar'
-
 module NepaliDateConverter
   class Convert
 
-    def self.to_nepali(yy, mm, dd)
+    def self.to_nepali(yy, mm, dd, devanagari: false)
       if NepaliDateConverter::Calendar.valid_english_date?(yy, mm, dd)
         @yy, @mm, @dd = yy, mm, dd
         # english month data
@@ -79,15 +78,26 @@ module NepaliDateConverter
         end
 
         @numDay = @day
-
-        {
-          year: @y,
-          month: @m,
-          date: @total_nDays,
-          day: NepaliDateConverter::Calendar.get_day_of_week(@day),
-          nepali_month: NepaliDateConverter::Calendar.get_nepali_month(@m),
-          week_day: @numDay
-        }
+        if devanagari
+          {
+              year: num2nepali(@y),
+              month: num2nepali(@m),
+              date: num2nepali(@total_nDays),
+              day: NepaliDateConverter::Calendar.get_day_of_week(@day, devanagari: true),
+              nepali_month: NepaliDateConverter::Calendar.get_nepali_month(@m, devanagari: true),
+              week_day: num2nepali(@numDay)
+          }
+        else
+  
+          {
+              year: @y,
+              month: @m,
+              date: @total_nDays,
+              day: NepaliDateConverter::Calendar.get_day_of_week(@day),
+              nepali_month: NepaliDateConverter::Calendar.get_nepali_month(@m),
+              week_day: @numDay
+          }
+        end
       end
     end
 
@@ -168,5 +178,12 @@ module NepaliDateConverter
       end
     end
 
+    # 1 -> '१'
+    # 2074 -> '२०७४'
+    def self.num2nepali(num)
+      num.to_s.split('').map do |digit|
+        ('0' .. '9').include?(digit) ? (2406 + digit.to_i).chr(Encoding::UTF_8) : digit
+      end.join('')
+    end
   end
 end
