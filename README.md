@@ -36,6 +36,17 @@ NepaliDateConverter::Convert.to_nepali(2017, 06, 20)
 # => {:year=>2074, :month=>3, :date=>6, :day=>"Tuesday", :nepali_month=>"Ashad", :week_day=> 3}
 ```
 
+```ruby
+NepaliDateConverter::Convert.to_nepali(2019,12,4, devanagari: true)
+#=> {:year=>"२०७६", :month=>"८", :date=>"१८", :day=>"बुधवार", :nepali_month=>"मंसिर", :week_day=>"४"}
+
+NepaliDateConverter::Calendar.get_nepali_month(1, devanagari: true)
+#=> "बैशाख" 
+
+NepaliDateConverter::Calendar.get_day_of_week(1, devanagari: true)
+#=> "आइतबार" 
+```
+
 convert B.S to A.D
 
 ```ruby
