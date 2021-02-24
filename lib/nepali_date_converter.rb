@@ -1,5 +1,6 @@
 require 'nepali_date_converter/version'
 require 'nepali_date_converter/calendar'
+
 module NepaliDateConverter
   class Convert
 
@@ -176,6 +177,11 @@ module NepaliDateConverter
           week_day: @numDay
         }
       end
+    end
+    
+    def self.to_english_date(yy, mm, dd)
+      date_hash = self.to_english(yy, mm, dd)
+      Date::strptime("#{date_hash[:year]}-#{date_hash[:month]}-#{date_hash[:date]}", "%Y-%m-%d")
     end
 
     # 1 -> '१'
