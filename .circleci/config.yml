@@ -5,15 +5,15 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node
+      - image: circleci/ruby:3.0
         environment:
-          BUNDLER_VERSION: 2.1.4
+          BUNDLER_VERSION: 2.3.5
     executor: ruby/default
     steps:
       - checkout
       - run:
           name: setup bundler
-          command: gem install bundler -v 2.1.4
+          command: gem install bundler -v 2.3.5
       - ruby/bundle-install
       - run:
           name: bundle exec rake
